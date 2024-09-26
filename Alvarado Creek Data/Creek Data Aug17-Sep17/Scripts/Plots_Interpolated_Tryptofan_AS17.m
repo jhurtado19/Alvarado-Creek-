@@ -20,7 +20,7 @@ subset_interpolated <- filloutliers(subset, "next");
 
 % create time vector same length as subset
 
-subset_time <- 1:length(subet)
+subset_time <- 1:length(subset)
 
 plot(subet_time,subset_interpolated);
 
