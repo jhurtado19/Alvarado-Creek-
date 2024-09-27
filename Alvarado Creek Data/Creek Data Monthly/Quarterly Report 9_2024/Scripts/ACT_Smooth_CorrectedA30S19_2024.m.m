@@ -26,6 +26,7 @@ x1 = smoothdata(x, 'SmoothingFactor', 0.05);
 % within an acceptable range from the dates proximal to the most recent
 % cleaning and use this average to correct the data. 
 xD = detrend(x1) + mean(x1(1:313));
+x_od = detrend(x) + mean(x(1:313)); % detrend original data
 
 % Fitting polynomials to the smoothed data. Polyfit takes as an argument a
 % numerical x_axis vector, so time_vector must be of type single or double,
@@ -46,7 +47,7 @@ p2 = polyfit(time_vector, x1,3);
 x1_LR = polyval(p2,time_vector);
 
 % Calculate some basic statistics from the corrected RFU vector.
-mean = mean(xD);
+mean_val = mean(xD);
 max = max(xD);
 min = min(xD);
 
@@ -56,6 +57,8 @@ equation1 = sprintf('y = %.e * x^3 + %.e * x^2 + %.e * x + %.f', p2(1), p2(2), p
 
 % Plot figures.
 figure(1);
+plot(t,x);
+plot(t,x_od);
 plot(t,x1,color='red');
 hold on;
 plot(t,xD,color='blue');
@@ -68,6 +71,6 @@ legend('Original-Smoothed','Corrected-Smoothed',equation,equation1, 'Location', 
 
 % Add UI panel to display stats. 
 panel = uipanel('Title', 'Corrected Statistics', 'FontSize', 12,'BackgroundColor', 'white','Position', [0.143265609744756,0.266778523489932,0.141596433506549,0.145973154362417],'FontName', 'Arial Rounded MT Bold'); % Adjust position as needed
-uicontrol('Parent', panel, 'Style', 'text', 'String', sprintf('Mean: %.2f', mean),'FontSize', 10, 'BackgroundColor', 'white', 'Position', [-7,20,100,20]);
+uicontrol('Parent', panel, 'Style', 'text', 'String', sprintf('Mean: %.2f', mean_val),'FontSize', 10, 'BackgroundColor', 'white', 'Position', [-7,20,100,20]);
 uicontrol('Parent', panel, 'Style', 'text', 'String', sprintf('Max: %.2f', max),'FontSize', 10, 'BackgroundColor', 'white', 'Position', [-10,40,100,20]);
 uicontrol('Parent', panel, 'Style', 'text', 'String', sprintf('Min: %.2f', min),'FontSize', 10, 'BackgroundColor', 'white', 'Position', [-11,60,100,20]);
