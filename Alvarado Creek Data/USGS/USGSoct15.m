@@ -27,10 +27,13 @@ legend("Raw USGS trace", "Gaussian Smoothed WS 30", "Raw Peaks", "Smoothed Peaks
 
 peak_diffs = diff(locs);
 peak_diffs2 = diff(locs2);
+mean_peakdiff = mean(peak_diffs2);
+mean_ptod = mean(timeofday(locs2));
 
-
-
+disp(['Mean Peak Time of Day: ', char(mean_ptod) ' hours']);
 disp(['Mean Peak Amplitude (trough to peak): ', num2str(mean_peaks) ' inches']);
+disp(['Mean Peak Diff (peak to peak): ', char(mean_peakdiff), ' hours']);
+
 
 
 FFTUSGS(y_vec);
