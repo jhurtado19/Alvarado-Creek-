@@ -1,5 +1,5 @@
 % Assuming raw_data is your sensor data and fs is the sampling frequency
-raw_data = cTemp;
+raw_data = msd;
 fs = 0.00167; % Example sampling frequency in Hz
 
 % Compute FFT
