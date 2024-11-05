@@ -1,4 +1,5 @@
-% Script to make normal distribution of peak times
+% This script shows WQL troughs and the temp peak
+
 %'r' or 'red' for red
 %'g' or 'green' for green
 %'b' or 'blue' for blue
@@ -11,22 +12,20 @@
 figure;
 [wlvlsd,wlmean] = normalpeaks(-wlvl,t_usgs,'b','--g');
 hold;
-[tempsd,tempmean] = normalpeaks2(-temp,t_wql,'r','--g');
-[cdomsd,cdommean] = normalpeaks(-cdom,t_wql,'c','--g');
 [trpsd,trpmean] = normalpeaks2(-trp,t_wql,'m','--g');
-% legend('Water Level','wlvl Mean Trough Time: 18:05','Temp','Temp Mean Trough Time:09:34','Tryp','Tryp Trough Peak Time: 18:49','CDOM','cdom Trough Peak Time: 21:29')
+[cdomsd,cdommean] = normalpeaks(-cdom,t_wql,'c','--g');
+[tempsd,tempmean] = normalpeaks2(temp,t_wql,'r','--r');
+% legend('Water Level','wlvl Mean Peak Time: 08:38','Tryp','Tryp Mean Peak Time: 07:32','CDOM','cdom Mean Peak Time: 07:42','Temp','Temp Mean Trough Time:09:34')
 legend('Water Level', ['wlvl Mean Trough Time: ', datestr(wlmean, 'HH:MM')], ...
-           'Temp', ['Temp Mean Trough Time: ', datestr(tempmean, 'HH:MM')], ...
+           'Tryp', ['Tryp Mean Trough Time: ', datestr(trpmean, 'HH:MM')], ...
            'CDOM', ['cdom Mean Trough Time: ', datestr(cdommean, 'HH:MM')], ...
-           'Tryp', ['Tryp Mean Trough Time: ', datestr(trpmean, 'HH:MM')]);
+           'Temp', ['Temp Mean Peak Time: ', datestr(tempmean, 'HH:MM')]);
 
-title("Normal Distribution of Trough Times Sep 19 - Oct 10")
-hold off;
 
+title('WQL and Water Lvl Troughs + Temp Peak Sep 19 - Oct 10')
 resultsTable = table({'Water Level'; 'Temperature'; 'Tryp'; 'CDOM'}, ...
                      [wlmean; tempmean; trpmean; cdommean], ...
                      [wlvlsd; tempsd; trpsd; cdomsd], ...
-                     'VariableNames', {'Parameter', 'MeanTroughTime', 'StandardDeviation'});
+                     'VariableNames', {'Parameter', 'Mean', 'StandardDeviation'});
 
-% Display the table
 disp(resultsTable);
