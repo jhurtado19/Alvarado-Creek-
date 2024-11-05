@@ -1,6 +1,10 @@
-function [stdTOD,mTOD] = normalpeaks(y_vec, t_vec)
+function [stdTOD,mTOD] = normalpeaks2(y_vec, t_vec)
     % Find peaks and their locations
     [pks, locs] = findpeaks(y_vec, t_vec, 'MinPeakDistance', 0.75);
+    pks(1) = [];
+    locs(1) = [];
+
+
     loc_hours = timeofday(locs);
     mTOD = mean(loc_hours);
     peak_time_hours = hours(loc_hours);
@@ -22,7 +26,7 @@ function [stdTOD,mTOD] = normalpeaks(y_vec, t_vec)
 
     % Plot the normal distribution of peak times in duration format
     plot(x_duration, y, 'LineWidth', 2);
-    title('Normal Distribution of Peak Times Over 22 Days');
+    title('Normal Distribution of Peak Times');
     xlabel('Time (HH:mm)');
     ylabel('Probability Density');
     xline(mTOD, '--r', 'LineWidth', 2); % 'Label', 'Mean', 'LabelOrientation', 'horizontal');
