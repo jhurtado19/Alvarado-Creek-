@@ -1,6 +1,6 @@
 function plotpeaks(x,y)
 
-[pks, locs] = findpeaks(y,x, 'MinPeakDistance', 0.75);
+[pks, locs] = findpeaks(y,x, 'MinPeakDistance', 0.7);
 [pks2, locs2] = findpeaks(-y,x, 'MinPeakDistance', 0.75);
 pks2 = -pks2;
 
