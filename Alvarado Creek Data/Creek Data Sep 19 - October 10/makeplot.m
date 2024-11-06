@@ -12,7 +12,7 @@
 figure;
 [wlvlsd,wlmean] = normalpeaks(wlvl,t_usgs,'b','--r');
 hold;
-[tempsd,tempmean] = normalpeaks2(temp,t_wql,'r','--r');
+[tempsd,tempmean] = normalpeaks(temp,t_wql,'r','--r');
 [cdomsd,cdommean] = normalpeaks(cdom,t_wql,'c','--r');
 [trpsd,trpmean] = normalpeaks(trp,t_wql,'m','--r');
 %legend('Water Level','wlvl Mean Peak Time: 08:38','Temp','Temp Mean Peak Time: 22:34','Tryp','Tryp Mean Peak Time: 07:32','CDOM','cdom Mean Peak Time: 07:42')
