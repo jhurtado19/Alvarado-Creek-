@@ -1,38 +1,37 @@
-function [stdTOD,mTOD] = normalpeaks(y_vec, t_vec, color, linespec)
+function [stdTOD, mTOD] = normalcircpeaks(y_vec, t_vec, color, linespec)
     % Find peaks and their locations
     [pks, locs] = findpeaks(y_vec, t_vec, 'MinPeakDistance', 0.75);
     loc_hours = timeofday(locs);
-    % mTOD = mean(loc_hours);
     peak_time_hours = hours(loc_hours);
-    stdTOD = std(loc_hours);
     
     % Calculate mean and standard deviation of peak times in hours
-    [meanhour, mew, circ_std_hours] = circmean(loc_hours);
+    [meanhour, mew, circ_std_hours] = circmean2(loc_hours);
     mu = mew;
     mTOD = meanhour;
-    %mu = mean(peak_time_hours);
-    sigma = std(peak_time_hours);
+    stdTOD = duration(circ_std_hours, 0, 0, 'Format', 'hh:mm');
+    sigma = circ_std_hours;
 
-    % Define the range for the x-axis to cover a full 24 hours
-    x = linspace(0, 24, 100); % 0 to 24 hours
+    % Define the range for the x-axis to cover a full 36 hours
+    x = linspace(0, 36, 100); % 0 to 36 hours
 
     % Calculate the normal distribution (bell curve)
     y = normpdf(x, mu, sigma);
 
     % Convert x values back to duration
     x_duration = duration(0, 0, x * 3600); % Convert hours to seconds and then to duration
-    % mean_time_str = datestr(mTOD, 'HH:MM');
 
     % Plot the normal distribution of peak times in duration format
     plot(x_duration, y, 'LineWidth', 2, 'Color', color);
     title('Normal Distribution of Peak Times Over 22 Days');
     xlabel('Time (HH:mm)');
     ylabel('Probability Density');
-    xline(mTOD, linespec, 'LineWidth', 2); % 'Label', 'Mean', 'LabelOrientation', 'horizontal');
-    % text(mTOD, max(y)/2, ['Mean: ', mean_time_str], 'Color', 'red', 'FontSize', 12, 'HorizontalAlignment', 'center');
-    % legend(['Data (Mean Time: ', mean_time_str, ')'])
-    grid on;
+    xline(mTOD, linespec, 'LineWidth', 2);
+    max_hours = 36; % Maximum number of hours
+labels = cell(1, max_hours + 1);
+for i = 0:max_hours
+    labels{i + 1} = datestr(datenum('00:00', 'HH:MM') + i/24, 'HH:MM');
+end
+xticks(duration(0, 0, (0:max_hours) * 3600));
+xticklabels(labels);
 
-    % Return the standard deviation
-    return;
 end
