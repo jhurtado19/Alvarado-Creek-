@@ -1,3 +1,6 @@
+
+% this function for time vectors with times that are circular beyond
+% midnight
 function [meanhour, mu, circ_std_hours] = circmean2(x)
     % Convert input to hours
     hrs = hours(x);
@@ -18,12 +21,11 @@ function [meanhour, mu, circ_std_hours] = circmean2(x)
     % Ensure the mean hour is positive
     
     if hrsmean < 0
-        hrsmean = hrsmean + 12;
+        hrsmean = hrsmean + 24;
     end
     
     % Assign the mean hour in decimal form to mu
     mu = hrsmean;
-    
     % Format the mean hour for display
     meanhour = duration(mu, 0, 0, 'Format', 'hh:mm');
     
