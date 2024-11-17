@@ -1,0 +1,3 @@
+% Smooth input data
+datareportSep2 = smoothdata(datareportSep2,"gaussian",49,...
+    "DataVariables","TryptophanRFU");
