@@ -9,7 +9,7 @@
 %'w' or 'white' for white
 
 figure;
-[wlvlsd,wlmean] = normalcircpeaks(-wlvl,t_usgs,'b','--g');
+% [wlvlsd,wlmean] = normalcircpeaks(-wlvl,t_usgs,'b','--g');
 hold;
 [tempsd,tempmean] = normalpeaks2(-temp,t_wql,'r','--g');
 [cdomsd,cdommean] = normalcircpeaks(-cdom,t_wql,'c','--g');

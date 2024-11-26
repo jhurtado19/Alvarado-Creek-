@@ -9,8 +9,8 @@ function [meanhour, mu, circ_std_hours] = circmean2(x)
     deghrs = hrs * 15;
     
     % Calculate the sum of sine and cosine components
-    sinsum = sum(sind(deghrs))
-    cossum = sum(cosd(deghrs))
+    sinsum = sum(sind(deghrs));
+    cossum = sum(cosd(deghrs));
     
     % Calculate the mean angle in degrees
     mean_angle = atand(sinsum/cossum);
@@ -32,7 +32,7 @@ function [meanhour, mu, circ_std_hours] = circmean2(x)
     % Calculate the resultant vector length (R)
     X = sinsum/length(deghrs);
     Y = cossum/length(deghrs);
-    R = sqrt(X^2 + Y^2)
+    R = sqrt(X^2 + Y^2);
     
     % Calculate the circular standard deviation
     circ_std = sqrt(-2 * log(R));
