@@ -1,3 +1,6 @@
+
+
+
 function makemat(tbl, filename)
     % Get the variable names from the table
     varNames = tbl.Properties.VariableNames;
@@ -12,5 +15,10 @@ function makemat(tbl, filename)
     end
     
     % Save the workspace to a .mat file
+    
     save(filename);
+
+
 end
+
+    

@@ -1,6 +1,11 @@
-function [stdTOD, mTOD] = normalcircpeaks(y_vec, t_vec, color, linespec)
+% This function handles time series with high peak variability due to noisy
+% data. Not meant for circular cases. 
+
+function [stdTOD, mTOD] = normalCCpeaks2(y_vec, t_vec, color, linespec)
     % Find peaks and their locations
-    [pks, locs] = findpeaks(y_vec, t_vec, 'MinPeakDistance', 0.75);
+    [pks, locs] =clusterpeaks2(t_vec,y_vec);
+
+
     loc_hours = timeofday(locs);
     peak_time_hours = hours(loc_hours);
     
