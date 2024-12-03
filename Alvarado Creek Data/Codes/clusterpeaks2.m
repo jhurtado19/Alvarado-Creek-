@@ -1,6 +1,6 @@
 function [cpks,clocs] =  clusterpeaks2(x,y)
 
-[pks, locs] = findpeaks(y, x, 'MinPeakDistance', 0.6);
+[pks, locs] = findpeaks(y, x, 'MinPeakDistance', 0.7);
 % convert into decimal hours
 loc2table = hours(timeofday(locs));
 % make and format a dummy axis vector 
@@ -11,7 +11,7 @@ table_vec = table_vec';
 loc_table = table(table_vec, loc2table);
 
 % detect outliers
-outlier_indices = isoutlier(loc_table.loc2table, 'ThresholdFactor', 0.75);
+outlier_indices = isoutlier(loc_table.loc2table, 'ThresholdFactor', 2.0);
 % Get indices 
 outlier_row_indices = find(outlier_indices);
 

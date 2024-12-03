@@ -15,7 +15,7 @@ function [stdTOD,mTOD] = normalpeaks2(y_vec, t_vec, color, linespec)
     sigma = std(peak_time_hours);
 
     % Define the range for the x-axis to cover a full 24 hours
-    x = linspace(0, 24, 100); % 0 to 24 hours
+    x = linspace(0, 24, 1000); % 0 to 24 hours
 
     % Calculate the normal distribution (bell curve)
     y = normpdf(x, mu, sigma);

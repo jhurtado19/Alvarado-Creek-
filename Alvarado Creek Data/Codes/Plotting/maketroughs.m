@@ -9,12 +9,11 @@
 %'w' or 'white' for white
 
 figure;
-% [wlvlsd,wlmean] = normalcircpeaks(-wlvl,t_usgs,'b','--g');
+[wlvlsd,wlmean] = normalcircpeaks(-wlvl,t_usgs,'b','--g');
 hold;
 [tempsd,tempmean] = normalpeaks2(-temp,t_wql,'r','--g');
 [cdomsd,cdommean] = normalcircpeaks(-cdom,t_wql,'c','--g');
-[trpsd,trpmean] = normalcircpeaks(-trp,t_wql,'m','--g');
-% legend('Water Level','wlvl Mean Trough Time: 18:05','Temp','Temp Mean Trough Time:09:34','Tryp','Tryp Trough Peak Time: 18:49','CDOM','cdom Trough Peak Time: 21:29')
+[trpsd,trpmean] = normalCCpeaks2(-trp,t_wql,'m','--g');
 legend('Water Level', ['wlvl Mean Trough Time: ', datestr(wlmean, 'HH:MM')], ...
            'Temp', ['Temp Mean Trough Time: ', datestr(tempmean, 'HH:MM')], ...
            'CDOM', ['cdom Mean Trough Time: ', datestr(cdommean, 'HH:MM')], ...
