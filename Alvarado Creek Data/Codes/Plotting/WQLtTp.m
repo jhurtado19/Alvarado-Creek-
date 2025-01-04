@@ -12,7 +12,7 @@
 figure;
 [wlvlsd,wlmean] = normalcircpeaks(-wlvl,t_usgs,'b','--g');
 hold;
-[trpsd,trpmean] = normalcircpeaks(-trp,t_wql,'m','--g');
+[trpsd,trpmean] = normalCCpeaks2(-trp,t_wql,'m','--g');
 [cdomsd,cdommean] = normalcircpeaks(-cdom,t_wql,'c','--g');
 [tempsd,tempmean] = normalcircpeaks(temp,t_wql,'r','--r');
 legend('Water Level', ['wlvl Mean Trough Time: ', datestr(wlmean, 'HH:MM')], ...

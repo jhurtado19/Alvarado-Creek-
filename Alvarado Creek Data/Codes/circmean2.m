@@ -20,9 +20,9 @@ function [meanhour, mu, circ_std_hours] = circmean2(x)
     
     % Ensure the mean hour is positive
     
-    if hrsmean < 0
+    %if hrsmean < 0
         hrsmean = hrsmean + 24;
-    end
+    %end
     
     % Assign the mean hour in decimal form to mu
     mu = hrsmean;

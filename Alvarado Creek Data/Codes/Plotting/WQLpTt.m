@@ -1,10 +1,10 @@
 
 
 figure;
-[wlvlsd,wlmean] = normalpeaks(wlvl,t_usgs,'b','--r');
+[wlvlsd,wlmean] = normalCCpeaks(wlvl,t_usgs,'b','--r');
 hold;
-[trpsd,trpmean] = normalpeaks(trp,t_wql,'m','--r');
-[cdomsd,cdommean] = normalpeaks(cdom,t_wql,'c','--r');
+[trpsd,trpmean] = normalCCpeaks(trp,t_wql,'m','--r');
+[cdomsd,cdommean] = normalCCpeaks(cdom,t_wql,'c','--r');
 [tempsd,tempmean] = normalpeaks(-temp,t_wql,'r','--g');
 
 legend('Water Level', ['wlvl Mean Peak Time: ', datestr(wlmean, 'HH:MM')], ...

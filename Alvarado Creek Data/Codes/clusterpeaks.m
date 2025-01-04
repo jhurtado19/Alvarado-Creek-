@@ -11,7 +11,7 @@ table_vec = table_vec';
 loc_table = table(table_vec, loc2table);
 
 % detect outliers
-outlier_indices = isoutlier(loc_table.loc2table, 'ThresholdFactor', 3.5);
+outlier_indices = isoutlier(loc_table.loc2table, 'ThresholdFactor', 1);
 % Get indices 
 outlier_row_indices = find(outlier_indices);
 

@@ -3,8 +3,8 @@
 figure;
 hold;
 
-[tempsd,tempmean] = normalpeaks(-temp,t_wql,'r','--g');
-[cdomsd,cdommean] = normalcircpeaks(-cdom,t_wql,'c','--g');
+[tempsd,tempmean] = normalCCpeaks(-temp,t_wql,'r','--g');
+[cdomsd,cdommean] = normalCCpeaks2(-cdom,t_wql,'c','--g');
 [trpsd,trpmean] = normalCCpeaks2(-trp,t_wql,'m','--g');
 
 legend('Temp', ['Temp Mean Trough Time: ', datestr(tempmean, 'HH:MM')], ...
